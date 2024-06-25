@@ -1,37 +1,145 @@
-body {
-    font-family: Arial, sans-serif;
+/* Add your CSS styles here */
+@font-face {
+    font-family: 'Gaoel';
+    src: url('fonts/gaoel-webfont.woff2') format('woff2');
+    /* font-weight: light;
+    font-style: normal; */
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('fonts/Inconsolata-VariableFont_wdth\,wght.ttf') format('truetype');
+    font-weight: 600;
+    /* font-style: normal; */
+}
+
+:root {
+    --main-color: #61C0BE;
+    --main-bg-color: #1B1B1B;
+}
+
+/* Basic Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
     color: #333;
+    line-height: 1.6;
 }
 
+/* Container */
 .container {
-    width: 80%;
-    margin: 0 auto;
+    width: 90%;
+    margin: auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
 }
 
+/* Header */
 header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
+    /* background: #1B1B1B; */
+    /* background: rgb(70, 18, 9); */
+    background: radial-gradient(circle, rgba(55, 31, 28, 0.6) 0%, rgb(228, 228, 228) 70%);
+    /* color: #fff; */
+    padding: 1.5rem 0;
+    text-align: center;
+    position: sticky;
+    position: -webkit-sticky; /* For Safari */
+    z-index: 1000;
+    top: 0;
+    /* padding-bottom: -1px; */
+}
+
+/* header::before {
+    content: ''; 
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+} */
+
+main {
+    margin-top: -1px;
+}
+
+#brand-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 1rem;
+}
+
+#brand-container img {
+    width: 90px;
+    height: 90px;
+    border-radius: 20%;
+    margin-right: 1rem;
+    border: solid 2px var(--main-color);
+}
+
+.logo-bar {
+    display: block;
+    background: var(--main-color);
+    height: 5rem;
+    width: 3px;
+    margin-right: 1rem;
+}
+
+.brand-name {
+    font-family: 'Gaoel';
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
+.brand-slogan {
+    font-family: 'Inconsolata';
+    font-weight: 500;
+    color: var(--main-color)
+        /* font-size: 1.25rem; */
 }
 
 header h1 {
-    margin: 0;
-    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+nav {
+    position: relative;
+    /* background-color: #1B1B1B; */
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #fff;
+    transition: all 0.3s;
 }
 
 nav ul {
     list-style: none;
-    margin: 0;
     padding: 0;
-    display: inline-block;
-    float: right;
 }
 
 nav ul li {
-    display: inline-block;
-    margin-left: 1rem;
+    display: inline;
+    padding: 0.5rem;
+    margin: 0;
+    /* background-color: #1B1B1B; */
 }
 
 nav ul li a {
@@ -39,59 +147,397 @@ nav ul li a {
     text-decoration: none;
 }
 
-.hero {
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    color: #fff;
-    text-align: center;
-    padding: 4rem 0;
+/* Additional styles for nav-active and menu-toggle */
+.nav-active {
+    display: flex;
+    height: 100%;
 }
 
-.hero h2 {
-    font-size: 2.5rem;
-    margin: 0;
+.toggle .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
 }
 
-.hero p {
-    font-size: 1.25rem;
+.toggle .bar:nth-child(2) {
+    opacity: 0;
 }
 
-.hero .btn {
-    background: #f7931e;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 1rem;
-    display: inline-block;
-}
-
-.workmanship,
-.contact {
-    padding: 2rem 0;
-    text-align: center;
-}
-
-.workmanship h2,
-.contact h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+.toggle .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 .gallery {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    gap: 20px;
+    transform: skew(-5deg);
 }
 
-.gallery img {
-    width: 30%;
-    margin: 1.5%;
-    border-radius: 10px;
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    /* transform: skew(-5deg); */
+    margin: 10px 0;
+    width: calc(33.333% - 20px);
+    transition: transform 0.5s ease;
 }
 
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    transform: skew(5deg) scale(1.1);
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.15) skew(5deg);
+}
+
+.gallery-item:hover .overlay-title {
+    transform: translate(-50%, -200%) scale(1.5);
+    transition: transform 0.5s ease;
+}
+
+.overlay-title {
+    z-index: 25;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .brand-name {
+        text-align: left;
+    }
+
+    .brand-slogan {
+        font-size: .75rem;
+    }
+
+    #brand-container img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logo-bar {
+        height: 3rem;
+        width: 2px;
+    }
+
+    .brand-name {
+        font-size: 1rem;
+    }
+
+    .brand-slogan {
+        display: none;
+        /* font-size: 0.67rem; */
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        max-height: 0;
+        /* flex-direction: column; */
+        align-items: center;
+        transition: max-height 0.3s ease-in;
+    }
+
+    .nav-active {
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+        transition: max-height 0.3s ease-in;
+    }
+
+    .nav-links li {
+        display: block;
+        margin: 0;
+        width: 100%;
+    }
+
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery-item {
+        width: 80%;
+        margin-bottom: 20px;
+        transform: none;
+    }
+
+    .gallery-item img {
+        transform: none;
+    }
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background: url('./assets/simon-berger-faN9WOldO9Q-unsplash.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 4rem 1rem;
+    /* border-radius: 0 0 50px 50px; */
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.moving-square {
+    position: absolute;
+    width: 25vh;
+    height: 12vh;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%);
+    animation: move-vertical 15s linear infinite;
+}
+
+@keyframes move-vertical {
+    0% {
+        top: -10%;
+    }
+
+    100% {
+        top: 110%;
+    }
+}
+
+#moving-square-0 {
+    left: -13vh;
+    animation-delay: 10.5s;
+}
+
+#moving-square-1 {
+    left: 20%;
+}
+
+#moving-square-2 {
+    left: 80%;
+    animation-delay: 3.5s;
+}
+
+#moving-square-3 {
+    left: 50%;
+    animation-delay: 6.25s;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+    z-index: 1;
+    /* border-radius: 0 0 50px 50px; */
+}
+
+.hero h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1rem;
+}
+
+.hero .btn {
+    background: rgb(70, 18, 9);
+    color: #fff;
+    padding: 1.5rem 2rem;
+    text-decoration: none;
+    border-radius: 15px;
+    margin-top: 1rem;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: x-large;
+    transition: all 0.3s ease;
+    border: outset 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero .btn:hover {
+    background: rgb(124, 32, 16);
+    border: outset 3px rgba(70, 18, 9, 0.5);
+}
+
+.hero .btn:active {
+    background: rgb(124, 32, 16);
+    border: inset 3px rgba(70, 18, 9, 0.5);
+}
+
+/* Services Section */
+.services {
+    padding: 2rem 0rem;
+    text-align: center;
+}
+
+.services h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5vh;
+}
+
+.services-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.services-tile {
+    height: 40vh;
+    width: 40vh;
+}
+
+.services-tile:nth-child(odd) {
+    align-self: flex-start;    
+}
+
+.services-tile:nth-child(even) {
+    align-self: flex-end;
+}
+
+.services-tile img {
+    width: 100%;
+    height: auto;
+    border-radius: 5%;
+    margin-bottom: 0.5rem;
+}
+
+/* Portfolio Section */
+.portfolio {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.portfolio h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.project {
+    margin: 1rem 0;
+}
+
+.project img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+.project h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
 footer {
     background: #333;
     color: #fff;
     text-align: center;
     padding: 1rem 0;
+}
+
+/* Media Queries */
+@media (min-width: 768px) and (max-width: 900px) {
+    .brand-slogan {
+        font-size: 1rem;
+        display: inline-block;
+    }
+
+    #brand-container img {
+        width: 70px;
+        height: 70px;
+    }
+
+    nav ul li {
+        margin: 0 1rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+    }
+
+    .services,
+    .portfolio {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .service,
+    .project {
+        width: 45%;
+    }
+
+    .gallery {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .gallery-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (min-width: 900px) {
+
+    .services,
+    .portfolio {
+        justify-content: space-between;
+    }
+
+    .service,
+    .project {
+        width: 30%;
+    }
+
+    .gallery {
+        flex-direction: row;
+    }
+
+    .gallery-item {
+        width: calc(33.333% - 40px);
+    }
 }
