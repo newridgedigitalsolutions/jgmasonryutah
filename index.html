@@ -4,9 +4,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Brick Mason Company Portfolio</title>
+	<title>J. G. Masonry LLC</title>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<style>
+		@tailwind base;
+		@tailwind components;
+		@tailwind utilities;
+
 		/* Shared Carousel Styles */
 		.carousel-image {
 			opacity: 0;
@@ -48,7 +52,15 @@
 		}
 	</style>
 	<script>
+
+		// EmailJS
+		const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
 		document.addEventListener('DOMContentLoaded', () => {
+
+			let currentYear = new Date().getFullYear();
+			document.querySelector('#footer_year').textContent = `@${currentYear}`;
+
 			const handleCarousel = (carouselId) => {
 				const images = document.querySelectorAll(`#${carouselId} .carousel-image`);
 				let currentIndex = 0;
@@ -91,12 +103,12 @@
 	</script>
 </head>
 
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
 	<!-- Navigation -->
 	<nav class="bg-white shadow-md">
 		<div class="container mx-auto px-4 py-4 flex justify-between items-center">
-			<strong class="text-xl font-bold">BrickMason Co.</strong>
-			<button class="lg:hidden text-gray-700 focus:outline-none" onclick="toggleMenu()">
+			<strong class="text-xl font-bold">J. G. Masonry</strong>
+			<!-- <button class="lg:hidden text-gray-700 focus:outline-none" onclick="toggleMenu()">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
 				</svg>
@@ -114,88 +126,117 @@
 				<li><a href="#contact" class="block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Contact Us</a>
 				</li>
 			</ul>
-		</div>
+		</div> -->
 	</nav>
 
-	<!-- Desktop Carousel (Hero Section) -->
-	<div id="desktop-carousel" class="hidden lg:block relative w-full h-80 overflow-hidden">
-		<div class="relative h-full">
-			<img src="./assets/brick-column.JPG" alt="Brick masonry 1"
-				class="carousel-image active w-full h-full object-cover">
-			<img src="./assets/brick-corner.JPG" alt="Brick masonry 2"
-				class="carousel-image w-full h-full object-cover">
-			<img src="./assets/brick-entry.JPG" alt="Brick masonry 3"
-				class="carousel-image w-full h-full object-cover">
-			<img src="./assets/brick-laying.JPG" alt="Brick masonry 3"
-				class="carousel-image w-full h-full object-cover">
-			<img src="./assets/brick-walls.JPG" alt="Brick masonry 3"
-				class="carousel-image w-full h-full object-cover">
+	<main class="grow">
+
+		<!-- Desktop Carousel (Hero Section) -->
+		<div id="desktop-carousel" class="hidden lg:block relative w-full h-80 overflow-hidden">
+			<div class="relative h-full">
+				<img src="./assets/brick-column.JPG" alt="Brick masonry 1"
+					class="carousel-image active w-full h-full object-cover">
+				<img src="./assets/brick-corner.JPG" alt="Brick masonry 2" class="carousel-image w-full h-full object-cover">
+				<img src="./assets/brick-entry.JPG" alt="Brick masonry 3" class="carousel-image w-full h-full object-cover">
+				<img src="./assets/brick-laying.JPG" alt="Brick masonry 3" class="carousel-image w-full h-full object-cover">
+				<img src="./assets/brick-walls.JPG" alt="Brick masonry 3" class="carousel-image w-full h-full object-cover">
+			</div>
+			<div class="carousel-button left prev-button">&#8249;</div>
+			<div class="carousel-button right next-button">&#8250;</div>
 		</div>
-		<div class="carousel-button left prev-button">&#8249;</div>
-		<div class="carousel-button right next-button">&#8250;</div>
-	</div>
 
-	<!-- Main Content -->
-	<main class="container mx-auto px-4 py-8">
-		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-			<section>
-				<hgroup>
-					<h2 class="text-3xl font-bold">Expert Brick Masonry Services</h2>
-					<h3 class="text-xl text-gray-600 mt-2">Building with strength, beauty, and precision.</h3>
-				</hgroup>
-				<p class="mt-4 text-gray-700">Welcome to BrickMason Co., where craftsmanship meets durability. We specialize in
-					residential and commercial brickwork, ensuring top-quality results for every project.</p>
+		<!-- Main Content -->
+		<div class="container mx-auto px-4 py-8">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+				<section>
+					<hgroup class="lg:text-center">
+						<h2 class="text-3xl font-bold">Expert Brick Masonry Services</h2>
+						<h3 class="text-xl text-gray-600 mt-2">Building with strength, beauty, and precision.</h3>
+					</hgroup>
+					<p class="mt-4 text-gray-700">Welcome to J G Masonry, where craftsmanship meets durability. We specialize in
+						residential and commercial brickwork, ensuring top-quality results for every project.</p>
 
-				<!-- Mobile Carousel -->
-				<div id="mobile-carousel" class="block lg:hidden relative w-full h-96 overflow-hidden mt-6">
-					<div class="relative h-full">
-						<img src="./assets/brick-column.JPG" alt="Brick masonry 1"
-							class="carousel-image active w-full h-full object-cover rounded-lg shadow-md">
-						<img src="./assets/brick-corner.JPG" alt="Brick masonry 2"
-							class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
-						<img src="./assets/brick-entry.JPG" alt="Brick masonry 3"
-							class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
-						<img src="./assets/brick-laying.JPG" alt="Brick masonry 3"
-							class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
-						<img src="./assets/brick-walls.JPG" alt="Brick masonry 3"
-							class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
+					<!-- Mobile Carousel -->
+					<div id="mobile-carousel" class="block lg:hidden relative w-full h-96 overflow-hidden mt-6">
+						<div class="relative h-full">
+							<img src="./assets/brick-column.JPG" alt="Brick masonry 1"
+								class="carousel-image active w-full h-full object-cover rounded-lg shadow-md">
+							<img src="./assets/brick-corner.JPG" alt="Brick masonry 2"
+								class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
+							<img src="./assets/brick-entry.JPG" alt="Brick masonry 3"
+								class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
+							<img src="./assets/brick-laying.JPG" alt="Brick masonry 3"
+								class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
+							<img src="./assets/brick-walls.JPG" alt="Brick masonry 3"
+								class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
+						</div>
+						<div class="carousel-button rounded-l-lg left prev-button">&#8249;</div>
+						<div class="carousel-button rounded-r-lg right next-button">&#8250;</div>
 					</div>
-					<div class="carousel-button left prev-button">&#8249;</div>
-					<div class="carousel-button right next-button">&#8250;</div>
-				</div>
 
-				<h3 class="text-2xl font-semibold mt-6">Our Mission</h3>
-				<p class="mt-2 text-gray-700">To deliver the finest masonry work that stands the test of time while enhancing
-					the aesthetic appeal of your property.</p>
-				<h3 class="text-2xl font-semibold mt-6">Why Choose Us?</h3>
-				<p class="mt-2 text-gray-700">With years of experience and a commitment to excellence, we take pride in bringing
-					your vision to life.</p>
-			</section>
+					<h3 class="lg:text-center text-2xl font-semibold mt-6">Our Mission</h3>
+					<p class="lg:text-center mt-2 text-gray-700">To deliver the finest masonry work that stands the test of time
+						while enhancing
+						the aesthetic appeal of your property.</p>
+					<h3 class="lg:text-center text-2xl font-semibold mt-6">Why Choose Us?</h3>
+					<p class="lg:text-center mt-2 text-gray-700">With years of experience and a commitment to excellence, we take
+						pride in bringing
+						your vision to life.</p>
+				</section>
+				<!-- Desktop Contact Us -->
+				<section aria-label="Contact Form" class="hidden lg:block bg-blue-100 py-8 rounded-lg shadow-md">
+					<div class="container mx-auto px-4">
+						<article class="text-center">
+							<hgroup>
+								<h2 class="text-3xl font-bold">Contact Us</h2>
+								<h3 class="text-xl text-gray-600 mt-2">Let us know how to reach out to you for your custom construction
+									needs.
+								</h3>
+							</hgroup>
+							<form class="mt-6 grid grid-cols-1 gap-4 max-w-lg mx-auto">
+								<input type="text" id="firstname" name="firstname" placeholder="First Name" aria-label="First Name"
+									required class="py-2 px-4 border rounded w-2/3 mx-auto">
+								<input type="email" id="email" name="email" placeholder="Email Address" aria-label="Email Address"
+									required class="py-2 px-4 border rounded w-2/3 mx-auto">
+								<button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 w-2/3 mx-auto">Send</button>
+							</form>
+						</article>
+					</div>
+				</section>
+			</div>
 		</div>
+
+		<!-- Mobile Contact Us -->
+		<section aria-label="Contact Form" class="lg:hidden bg-blue-100 py-8">
+			<div class="container mx-auto px-4">
+				<article class="text-center">
+					<hgroup>
+						<h2 class="text-3xl font-bold">Contact Us</h2>
+						<h3 class="text-xl text-gray-600 mt-2">Let us know how to reach out to you for your custom construction
+							needs.
+						</h3>
+					</hgroup>
+					<form class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-lg mx-auto">
+						<input type="text" id="firstname" name="firstname" placeholder="First Name" aria-label="First Name" required
+							class="py-2 px-4 border rounded">
+						<input type="email" id="email" name="email" placeholder="Email Address" aria-label="Email Address" required
+							class="py-2 px-4 border rounded">
+						<button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Send</button>
+					</form>
+				</article>
+			</div>
+		</section>
+
 	</main>
 
-	<!-- Subscribe Section -->
-	<section aria-label="Subscribe example" class="bg-blue-50 py-8">
-		<div class="container mx-auto px-4">
-			<article class="text-center">
-				<hgroup>
-					<h2 class="text-3xl font-bold">Stay Updated</h2>
-					<h3 class="text-xl text-gray-600 mt-2">Get the latest updates on our projects and services.</h3>
-				</hgroup>
-				<form class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-lg mx-auto">
-					<input type="text" id="firstname" name="firstname" placeholder="First Name" aria-label="First Name" required
-						class="py-2 px-4 border rounded">
-					<input type="email" id="email" name="email" placeholder="Email Address" aria-label="Email Address" required
-						class="py-2 px-4 border rounded">
-					<button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Subscribe</button>
-				</form>
-			</article>
-		</div>
-	</section>
-
 	<!-- Footer -->
-	<footer class="bg-gray-800 text-gray-400 py-4">
-		<div class="container mx-auto text-center">
+	<footer class="bg-gray-800 text-gray-400 py-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+		<div class="mx-auto">
+			<small>
+				<a class="whitespace-nowrap" href="https://www.newridgedigitalsolutions.com/">New Ridge Digital Solutions <span id="footer_year"></span></a>
+			</small>
+		</div>
+		<div class="mx-auto text-center">
 			<small>
 				<a href="#privacy" class="underline hover:text-gray-200">Privacy Policy</a> •
 				<a href="#terms" class="underline hover:text-gray-200">Terms of Service</a>
