@@ -1,11 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JG Masonry</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>J. G. Masonry LLC</title>
+	<script defer type="module" src="./src/script.js"></script>
+	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+	<link rel="stylesheet" type="text/css" href="./src/output.css">
+	<script>
+
+		document.addEventListener('DOMContentLoaded', () => {
+
+			let currentYear = new Date().getFullYear();
+			document.querySelector('#footer_year').textContent = `@${currentYear}`;
+
+			const handleCarousel = (carouselId) => {
+				const images = document.querySelectorAll(`#${carouselId} .carousel-image`);
+				let currentIndex = 0;
+
+				const showImage = (index) => {
+					images.forEach((img, i) => {
+						img.classList.toggle('active', i === index);
+					});
+				};
+
+				const nextImage = () => {
+					currentIndex = (currentIndex + 1) % images.length;
+					showImage(currentIndex);
+				};
+
+				const prevImage = () => {
+					currentIndex = (currentIndex - 1 + images.length) % images.length;
+					showImage(currentIndex);
+				};
+
+				// Attach event listeners
+				document.querySelector(`#${carouselId} .next-button`).addEventListener('click', nextImage);
+				document.querySelector(`#${carouselId} .prev-button`).addEventListener('click', prevImage);
+
+				// Automatic slide
+				setInterval(nextImage, 5000);
+
+				// Show the first image initially
+				showImage(currentIndex);
+			};
+
+			handleCarousel('desktop-carousel');
+			handleCarousel('mobile-carousel');
+		});
+
+		function toggleMenu() {
+			const menu = document.getElementById('mobile-menu');
+			menu.classList.toggle('hidden');
+		}
+
+	</script>
 </head>
-<body>
-    Welcome to JG Masonry!
+
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+	<!-- Navigation -->
+	<nav class="bg-white shadow-md">
+		<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+			<strong class="text-xl font-bold">J. G. Masonry</strong>
+			<!-- <button class="lg:hidden text-gray-700 focus:outline-none" onclick="toggleMenu()">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+				</svg>
+			</button>
+			<ul class="hidden lg:flex space-x-6">
+				<li><a href="#services" class="text-gray-700 hover:text-gray-900">Services</a></li>
+				<li><a href="#portfolio" class="text-gray-700 hover:text-gray-900">Portfolio</a></li>
+				<li><a href="#contact" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Contact Us</a></li>
+			</ul>
+		</div>
+		<div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-200">
+			<ul class="space-y-2 p-4">
+				<li><a href="#services" class="block text-gray-700 hover:text-gray-900">Services</a></li>
+				<li><a href="#portfolio" class="block text-gray-700 hover:text-gray-900">Portfolio</a></li>
+				<li><a href="#contact" class="block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Contact Us</a>
+				</li>
+			</ul>
+		</div> -->
+	</nav>
+
+	<main class="grow">
+
+		<!-- Desktop Carousel (Hero Section) -->
+		<div id="desktop-carousel" class="hidden lg:block relative w-full h-96 overflow-hidden">
+			<div class="relative h-full">
+				<img src="./assets/brick-column.JPG" alt="Brick masonry 1"
+					class="carousel-image active w-full h-full object-cover">
+				<img src="./assets/brick-corner.JPG" alt="Brick masonry 2" class="carousel-image w-full h-full object-cover">
+				<img src="./assets/brick-entry.JPG" alt="Brick masonry 3" class="carousel-image w-full h-full object-cover">
+				<img src="./assets/brick-laying.JPG" alt="Brick masonry 3" class="carousel-image w-full h-full object-cover">
+				<img src="./assets/brick-walls.JPG" alt="Brick masonry 3" class="carousel-image w-full h-full object-cover">
+			</div>
+			<div class="carousel-button left prev-button">&#8249;</div>
+			<div class="carousel-button right next-button">&#8250;</div>
+		</div>
+
+		<!-- Main Content -->
+		<div class="container mx-auto px-4 py-8">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+				<section>
+					<hgroup class="lg:text-center">
+						<h2 class="text-3xl font-bold">Expert Brick Masonry Services</h2>
+						<h3 class="text-xl text-gray-600 mt-2">Building with strength, beauty, and precision.</h3>
+					</hgroup>
+					<p class="mt-4 text-gray-700">Welcome to J G Masonry, where craftsmanship meets durability. We specialize in
+						residential and commercial brickwork, ensuring top-quality results for every project.</p>
+
+					<!-- Mobile Carousel -->
+					<div id="mobile-carousel" class="block lg:hidden relative w-full h-96 overflow-hidden mt-6">
+						<div class="relative h-full">
+							<img src="./assets/brick-column.JPG" alt="Brick masonry 1"
+								class="carousel-image active w-full h-full object-cover rounded-lg shadow-md">
+							<img src="./assets/brick-corner.JPG" alt="Brick masonry 2"
+								class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
+							<img src="./assets/brick-entry.JPG" alt="Brick masonry 3"
+								class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
+							<img src="./assets/brick-laying.JPG" alt="Brick masonry 3"
+								class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
+							<img src="./assets/brick-walls.JPG" alt="Brick masonry 3"
+								class="carousel-image w-full h-full object-cover rounded-lg shadow-md">
+						</div>
+						<div class="carousel-button rounded-l-lg left prev-button">&#8249;</div>
+						<div class="carousel-button rounded-r-lg right next-button">&#8250;</div>
+					</div>
+
+					<h3 class="lg:text-center text-2xl font-semibold mt-6">Our Mission</h3>
+					<p class="lg:text-center mt-2 text-gray-700">To deliver the finest masonry work that stands the test of time
+						while enhancing
+						the aesthetic appeal of your property.</p>
+					<h3 class="lg:text-center text-2xl font-semibold mt-6">Why Choose Us?</h3>
+					<p class="lg:text-center mt-2 text-gray-700">With years of experience and a commitment to excellence, we take
+						pride in bringing
+						your vision to life.</p>
+				</section>
+				<!-- Desktop Contact Us -->
+				<section aria-label="Contact Form" class="hidden lg:block bg-blue-100 py-8 rounded-lg shadow-md">
+					<div class="container mx-auto px-4">
+						<article class="text-center">
+							<hgroup>
+								<h2 class="text-3xl font-bold">Contact Us</h2>
+								<h3 class="text-xl text-gray-600 mt-2">Let us know how to reach out to you for your custom construction
+									needs.
+								</h3>
+							</hgroup>
+							<div class="flex flex-col justify-center items-start no-wrap w-3/4 h-full mx-auto my-8">
+								<div class="flex flex-row justify-center items-center">
+									<button class="bg-blue-400 rounded-full shadow-md text-gray-800 p-3 m-2">
+										<svg xmlns="http://www.w3.org/2000/svg" class="size-8" viewBox="0 0 24 24" fill="currentColor">
+											<path
+												d="m20.487 17.14-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.085-1.39z">
+											</path>
+										</svg>
+									</button>
+									<span class="text-2xl ml-5">435-713-5518</span>
+								</div>
+								<div class="flex flex-row justify-center items-center">
+									<button class="bg-blue-400 rounded-full shadow-md text-gray-800 p-3 m-2">
+										<svg xmlns="http://www.w3.org/2000/svg" class="size-8" viewBox="0 0 24 24" fill="currentColor">
+											<path
+												d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z">
+											</path>
+										</svg>
+									</button>
+									<span class="text-xl ml-5">jgmasonryllc2002@gmail.com</span>
+								</div>
+							</div>
+
+							<!-- TODO: EmailJS form for contact emails -->
+							<!-- <form class="mt-6 grid grid-cols-1 gap-4 max-w-lg mx-auto" id="desktopForm">
+								<input type="text" id="firstName" name="firstName" placeholder="First Name" aria-label="First Name"
+									required class="py-2 px-4 border rounded w-2/3 mx-auto">
+								<input type="email" id="email" name="email" placeholder="Email Address" aria-label="Email Address"
+									required class="py-2 px-4 border rounded w-2/3 mx-auto">
+								<button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 w-2/3 mx-auto">Send</button>
+							</form> -->
+						</article>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<!-- Mobile Contact Us -->
+		<section aria-label="Contact Form" class="lg:hidden bg-blue-100 py-8">
+			<div class="container mx-auto px-4">
+				<article class="text-center">
+					<hgroup>
+						<h2 class="text-3xl font-bold">Contact Us</h2>
+						<h3 class="text-xl text-gray-600 mt-2">Let us know how to reach out to you for your custom construction
+							needs.
+						</h3>
+					</hgroup>
+					<div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-lg mx-auto">
+						<button onclick="location.href='tel:435-713-5518'" class="flex items-center justify-start bg-blue-400 rounded-full shadow-md text-gray-800 p-3">
+							<svg xmlns="http://www.w3.org/2000/svg" class="size-8 ml-8" viewBox="0 0 24 24" fill="currentColor">
+								<path
+									d="m20.487 17.14-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.085-1.39z">
+								</path>
+							</svg>
+							<span class="text-2xl mx-auto">435-713-5518</span>
+						</button>
+						<button onclick="location.href='mailto:jgmasonryllc2002@gmail.com'" class="flex items-center justify-start bg-blue-400 rounded-full shadow-md text-gray-800 p-3">
+							<svg xmlns="http://www.w3.org/2000/svg" class="size-8 ml-8" viewBox="0 0 24 24" fill="currentColor">
+								<path
+									d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z">
+								</path>
+							</svg>
+							<span class="text-xl mx-auto">jgmasonryllc2002@gmail.com</span>
+						</button>
+					</div>
+					<!-- TODO: EmailJS form for contact emails mobile -->
+					<!-- <form class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-lg mx-auto" id="mobileForm">
+						<input type="text" id="firstName" name="firstName" placeholder="First Name" aria-label="First Name" required
+							class="py-2 px-4 border rounded">
+						<input type="email" id="email" name="email" placeholder="Email Address" aria-label="Email Address" required
+							class="py-2 px-4 border rounded">
+						<button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Send</button>
+					</form> -->
+				</article>
+			</div>
+		</section>
+
+	</main>
+
+	<!-- Footer -->
+	 <footer class="bg-gray-800 text-gray-400 py-4 flex flex-row items-center justify-center">
+	<!-- <footer class="bg-gray-800 text-gray-400 py-4 grid grid-cols-1 sm:grid-cols-2 gap-4"> -->
+		<div class="mx-auto">
+			<small>
+				<a class="whitespace-nowrap" href="https://www.newridgedigitalsolutions.com/">New Ridge Digital Solutions <span
+						id="footer_year"></span></a>
+			</small>
+		</div>
+		<!-- <div class="mx-auto text-center">
+			<small>
+				<a href="#privacy" class="underline hover:text-gray-200">Privacy Policy</a> •
+				<a href="#terms" class="underline hover:text-gray-200">Terms of Service</a>
+			</small>
+		</div> -->
+	</footer>
 </body>
+
 </html>

@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Shared Carousel Styles */
+.carousel-image {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  position: absolute;
+  inset: 0;
+}
+
+.carousel-image.active {
+  opacity: 1;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-button.left {
+  left: 0;
+}
+
+.carousel-button.right {
+  right: 0;
+}
