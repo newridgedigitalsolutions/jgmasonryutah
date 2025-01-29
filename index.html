@@ -5,56 +5,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>J. G. Masonry LLC</title>
-	<script src="https://cdn.tailwindcss.com"></script>
-	<style>
-		@tailwind base;
-		@tailwind components;
-		@tailwind utilities;
-
-		/* Shared Carousel Styles */
-		.carousel-image {
-			opacity: 0;
-			transition: opacity 1s ease-in-out;
-			position: absolute;
-			inset: 0;
-		}
-
-		.carousel-image.active {
-			opacity: 1;
-		}
-
-		.carousel-button {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			width: 50px;
-			background: rgba(0, 0, 0, 0.3);
-			color: white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 2rem;
-			font-weight: bold;
-			cursor: pointer;
-			transition: background 0.3s;
-		}
-
-		.carousel-button:hover {
-			background: rgba(0, 0, 0, 0.5);
-		}
-
-		.carousel-button.left {
-			left: 0;
-		}
-
-		.carousel-button.right {
-			right: 0;
-		}
-	</style>
+	<script defer type="module" src="./src/script.js"></script>
+	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+	<link rel="stylesheet" type="text/css" href="./src/output.css">
 	<script>
-
-		// EmailJS
-		const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 		document.addEventListener('DOMContentLoaded', () => {
 
@@ -100,6 +54,7 @@
 			const menu = document.getElementById('mobile-menu');
 			menu.classList.toggle('hidden');
 		}
+
 	</script>
 </head>
 
@@ -132,7 +87,7 @@
 	<main class="grow">
 
 		<!-- Desktop Carousel (Hero Section) -->
-		<div id="desktop-carousel" class="hidden lg:block relative w-full h-80 overflow-hidden">
+		<div id="desktop-carousel" class="hidden lg:block relative w-full h-96 overflow-hidden">
 			<div class="relative h-full">
 				<img src="./assets/brick-column.JPG" alt="Brick masonry 1"
 					class="carousel-image active w-full h-full object-cover">
@@ -193,13 +148,37 @@
 									needs.
 								</h3>
 							</hgroup>
-							<form class="mt-6 grid grid-cols-1 gap-4 max-w-lg mx-auto">
-								<input type="text" id="firstname" name="firstname" placeholder="First Name" aria-label="First Name"
+							<div class="flex flex-col justify-center items-start no-wrap w-3/4 h-full mx-auto my-8">
+								<div class="flex flex-row justify-center items-center">
+									<button class="bg-blue-400 rounded-full shadow-md text-gray-800 p-3 m-2">
+										<svg xmlns="http://www.w3.org/2000/svg" class="size-8" viewBox="0 0 24 24" fill="currentColor">
+											<path
+												d="m20.487 17.14-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.085-1.39z">
+											</path>
+										</svg>
+									</button>
+									<span class="text-2xl ml-5">435-713-5518</span>
+								</div>
+								<div class="flex flex-row justify-center items-center">
+									<button class="bg-blue-400 rounded-full shadow-md text-gray-800 p-3 m-2">
+										<svg xmlns="http://www.w3.org/2000/svg" class="size-8" viewBox="0 0 24 24" fill="currentColor">
+											<path
+												d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z">
+											</path>
+										</svg>
+									</button>
+									<span class="text-xl ml-5">jgmasonryllc2002@gmail.com</span>
+								</div>
+							</div>
+
+							<!-- TODO: EmailJS form for contact emails -->
+							<!-- <form class="mt-6 grid grid-cols-1 gap-4 max-w-lg mx-auto" id="desktopForm">
+								<input type="text" id="firstName" name="firstName" placeholder="First Name" aria-label="First Name"
 									required class="py-2 px-4 border rounded w-2/3 mx-auto">
 								<input type="email" id="email" name="email" placeholder="Email Address" aria-label="Email Address"
 									required class="py-2 px-4 border rounded w-2/3 mx-auto">
 								<button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 w-2/3 mx-auto">Send</button>
-							</form>
+							</form> -->
 						</article>
 					</div>
 				</section>
@@ -216,13 +195,32 @@
 							needs.
 						</h3>
 					</hgroup>
-					<form class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-lg mx-auto">
-						<input type="text" id="firstname" name="firstname" placeholder="First Name" aria-label="First Name" required
+					<div class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-lg mx-auto">
+						<button onclick="location.href='tel:435-713-5518'" class="flex items-center justify-start bg-blue-400 rounded-full shadow-md text-gray-800 p-3">
+							<svg xmlns="http://www.w3.org/2000/svg" class="size-8 ml-8" viewBox="0 0 24 24" fill="currentColor">
+								<path
+									d="m20.487 17.14-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.085-1.39z">
+								</path>
+							</svg>
+							<span class="text-2xl mx-auto">435-713-5518</span>
+						</button>
+						<button onclick="location.href='mailto:jgmasonryllc2002@gmail.com'" class="flex items-center justify-start bg-blue-400 rounded-full shadow-md text-gray-800 p-3">
+							<svg xmlns="http://www.w3.org/2000/svg" class="size-8 ml-8" viewBox="0 0 24 24" fill="currentColor">
+								<path
+									d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z">
+								</path>
+							</svg>
+							<span class="text-xl mx-auto">jgmasonryllc2002@gmail.com</span>
+						</button>
+					</div>
+					<!-- TODO: EmailJS form for contact emails mobile -->
+					<!-- <form class="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-lg mx-auto" id="mobileForm">
+						<input type="text" id="firstName" name="firstName" placeholder="First Name" aria-label="First Name" required
 							class="py-2 px-4 border rounded">
 						<input type="email" id="email" name="email" placeholder="Email Address" aria-label="Email Address" required
 							class="py-2 px-4 border rounded">
 						<button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Send</button>
-					</form>
+					</form> -->
 				</article>
 			</div>
 		</section>
@@ -230,18 +228,20 @@
 	</main>
 
 	<!-- Footer -->
-	<footer class="bg-gray-800 text-gray-400 py-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+	 <footer class="bg-gray-800 text-gray-400 py-4 flex flex-row items-center justify-center">
+	<!-- <footer class="bg-gray-800 text-gray-400 py-4 grid grid-cols-1 sm:grid-cols-2 gap-4"> -->
 		<div class="mx-auto">
 			<small>
-				<a class="whitespace-nowrap" href="https://www.newridgedigitalsolutions.com/">New Ridge Digital Solutions <span id="footer_year"></span></a>
+				<a class="whitespace-nowrap" href="https://www.newridgedigitalsolutions.com/">New Ridge Digital Solutions <span
+						id="footer_year"></span></a>
 			</small>
 		</div>
-		<div class="mx-auto text-center">
+		<!-- <div class="mx-auto text-center">
 			<small>
 				<a href="#privacy" class="underline hover:text-gray-200">Privacy Policy</a> •
 				<a href="#terms" class="underline hover:text-gray-200">Terms of Service</a>
 			</small>
-		</div>
+		</div> -->
 	</footer>
 </body>
 
